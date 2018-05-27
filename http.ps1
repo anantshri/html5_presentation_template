@@ -1,21 +1,34 @@
 #!/bin/bash
 
+# Copied from https://github.com/anantshri/script-collection/blob/master/http.ps1
+
+# Credits
+# 1. https://stackoverflow.com/a/39422067 : For eval idea
+# 2. https://gist.github.com/obscuresec/71df69d828e6e05986e9 : Basic powershell webserver code
+# 3. https://gist.github.com/theit8514/58a31895ae901206f6957a382f61618b : mimetype collection and indexpage addition and 404
+# 
+
+# TODO's
+# 1. take commandline argument in powershell also
+# 1. exit in powershell gracefully at ctrl + c or ctrl + break (c not working break not tested)
+# 
+
 #bash PORT=${1:-8000}
 #bash shift
 #bash if which python &> /dev/null; then
-#bash 	PY=`python -c 'import platform; print(platform.python_version())' | cut -f1 -d"."`
-#bash 	if [ $PY == 2 ]
-#bash 	then
-#bash 		python -m SimpleHTTPServer $PORT $*
-#bash 	else
-#bash 		python -m http.server $PORT $*
-#bash 	fi
+#bash   PY=`python -c 'import platform; print(platform.python_version())' | cut -f1 -d"."`
+#bash   if [ $PY == 2 ]
+#bash   then
+#bash       python -m SimpleHTTPServer $PORT $*
+#bash   else
+#bash       python -m http.server $PORT $*
+#bash   fi
 #bash elif which ruby &> /dev/null; then
-#bash 	ruby -run -ehttpd . -p$PORT $*
+#bash   ruby -run -ehttpd . -p$PORT $*
 #bash elif which php &> /dev/null; then
-#bash 	php -S 127.0.0.1:$PORT $*
+#bash   php -S 127.0.0.1:$PORT $*
 #bash else
-#bash 	echo "Python/Ruby/PHP not found"
+#bash   echo "Python/Ruby/PHP not found"
 #bash fi
 function RUNSERVER {
     eval "$(grep '^#bash' $0 | sed -e 's/^#bash //')"
